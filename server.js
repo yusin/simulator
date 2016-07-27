@@ -55,7 +55,7 @@ compiler.plugin('done', function() {
 });
 
 const server = http.createServer(app);
-server.listen(3000, 'localhost', function(err) {
+server.listen(3000, '0.0.0.0', function(err) {
   if (err) throw err;
 
   const addr = server.address();
