@@ -8,8 +8,8 @@ let state = {
   enabled: true,
   state: 'Inactive',
   model: {
-    Firmware: 'lkjhlk',
-    Model: 'Simulated'
+    Firmware: 'Release 1.2.3.4,March 14 1995',
+    Model: 'Simulated System'
   },
   slides:[]
 

@@ -5,7 +5,12 @@ module.exports = function (app, state) {
       Firmware: state.model.Firmware,
       Model: state.model.Model
     };
-    res.send(reponse);
+    if (state.enabled) {
+      res.send(reponse);
+    } else {
+      res.status(404)        // HTTP status 404: NotFound
+        .send('Not found');
+    }
   });
 
   app.get('/api/dsr/', (req, res) => {
