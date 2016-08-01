@@ -36,6 +36,8 @@ app.get('*', function(req, res, next) {
 // Ensure there's no important state in there!
 const watcher = chokidar.watch('./server');
 
+process.env.PORT = process.env.PORT || 3000;
+
 watcher.on('ready', function() {
   watcher.on('all', function() {
     console.log("Clearing /server/ module cache from server");
@@ -55,7 +57,7 @@ compiler.plugin('done', function() {
 });
 
 const server = http.createServer(app);
-server.listen(3000, '0.0.0.0', function(err) {
+server.listen(process.env.PORT, '0.0.0.0', function(err) {
   if (err) throw err;
 
   const addr = server.address();
