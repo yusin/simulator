@@ -37,4 +37,23 @@ module.exports = function (app, state) {
         res.send(reponse);
     });
 
+    app.post('/api/dsr/cmd/starttests', (req, res) => {
+
+        console.log('Start tests');
+        state.state = 'Active';
+        setTimeout(() => {
+            state.state = 'Inactive';
+            console.log('Inactive');
+        }, 10000);
+        var reponse = {
+            "Failures": null,
+            "JobsList": [],
+            "cmdResponse": {
+                "Message": "",
+                "Name": "Accepted"
+            }
+        };
+        res.send(reponse);
+    });
+
 };
