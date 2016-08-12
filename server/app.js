@@ -11,12 +11,12 @@ let state = {
     Firmware: 'Release 1.2.3.4,March 14 1995',
     Model: 'Simulated System'
   },
-  slides: {
-    '1': '123',
-    '2': '456',
-    '3': '789',
-    '4': '100'
-  }
+  slides: [
+    { '1': '' },
+    { '2': '' },
+    { '3': '' },
+    { '4': '' }
+  ]
 
 };
 app.use(bodyParser.urlencoded({
