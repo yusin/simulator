@@ -8,9 +8,9 @@ module.exports = function (app, state) {
             console.log('tray is opened');
         }, 5000);
         var reponse = {
-                Message: "",  
-                Name: "Accepted"
-            };
+            Message: "",
+            Name: "Accepted"
+        };
         res.send(reponse);
     });
 

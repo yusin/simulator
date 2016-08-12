@@ -26,7 +26,16 @@ const App = connect(state => ({ count: state }))(React.createClass({
   },
 
   getInitialState() {
-    return { dsr: { model: {} }, actual: {} };
+    return {
+      dsr: {
+        model: {}, slides: {
+          '1': '',
+          '2': '',
+          '3': '',
+          '4': ''
+        }
+      }, actual: {}
+    };
   },
   componentDidMount() {
 
@@ -89,6 +98,11 @@ const App = connect(state => ({ count: state }))(React.createClass({
   handleChangeFirmware(v, val) {
     let dsr = this.state.dsr;
     dsr.model.Firmware = val;
+    this.setState({ dsr: dsr });
+  },
+  changeWell(id, value){
+    let dsr = this.state.dsr;
+    dsr.slides[id] = value;
     this.setState({ dsr: dsr });
   },
   handleChangeEnabled(v, val) {
@@ -170,16 +184,16 @@ const App = connect(state => ({ count: state }))(React.createClass({
               </Row>
               <Row is="center">
                 <Cell is="3">
-                  <Well id={1} />
+                  <Well id={1} well={this.state.dsr.slides['1']} onChange={this.changeWell} />
                 </Cell>
                 <Cell is="3">
-                  <Well id={2} />
+                  <Well id={2}  well={this.state.dsr.slides['2']}  onChange={this.changeWell} />
                 </Cell>
                 <Cell is="3">
-                  <Well id={3} />
+                  <Well id={3} well={this.state.dsr.slides['3']} onChange={this.changeWell}  />
                 </Cell>
                 <Cell is="3">
-                  <Well id={4} />
+                  <Well id={4} well={this.state.dsr.slides['4']} onChange={this.changeWell}  />
                 </Cell>
               </Row>
               <Row is="end">
