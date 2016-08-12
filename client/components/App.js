@@ -103,7 +103,7 @@ const App = connect(state => ({ count: state }))(React.createClass({
   },
   changeWell(id, value) {
     let dsr = this.state.dsr;
-    dsr.slides[parseInt(id)-1+''] = {slideId: value, stationId: id};
+    dsr.slides[parseInt(id)-1+''] = {slideId: value, stationId: id-1};
     this.setState({ dsr: dsr });
   },
   handleChangeEnabled(v, val) {
