@@ -30,10 +30,10 @@ const App = connect(state => ({ count: state }))(React.createClass({
       dsr: {
         model: {},
         slides: [
-          { '1': '' },
-          { '2': '' },
-          { '3': '' },
-          { '4': '' }
+          { slideId:'1', stationId: '' },
+          { slideId:'2', stationId: '' },
+          { slideId:'3', stationId: '' },
+          { slideId:'4', stationId: '' },
         ]
       }, actual: {}
     };
@@ -103,7 +103,7 @@ const App = connect(state => ({ count: state }))(React.createClass({
   },
   changeWell(id, value) {
     let dsr = this.state.dsr;
-    dsr.slides[parseInt(id)-1][id] = value;
+    dsr.slides[parseInt(id)-1+''] = {slideId: value, stationId: id};
     this.setState({ dsr: dsr });
   },
   handleChangeEnabled(v, val) {
@@ -185,16 +185,16 @@ const App = connect(state => ({ count: state }))(React.createClass({
               </Row>
               <Row is="center">
                 <Cell is="3">
-                  <Well id={1} well={this.state.dsr.slides[0]['1']} onChange={this.changeWell} />
+                  <Well id={1} well={this.state.dsr.slides[0].slideId} onChange={this.changeWell} />
                 </Cell>
                 <Cell is="3">
-                  <Well id={2}  well={this.state.dsr.slides[1]['2']}  onChange={this.changeWell} />
+                  <Well id={2}  well={this.state.dsr.slides[1].slideId}  onChange={this.changeWell} />
                 </Cell>
                 <Cell is="3">
-                  <Well id={3} well={this.state.dsr.slides[2]['3']} onChange={this.changeWell}  />
+                  <Well id={3} well={this.state.dsr.slides[2].slideId} onChange={this.changeWell}  />
                 </Cell>
                 <Cell is="3">
-                  <Well id={4} well={this.state.dsr.slides[3]['4']} onChange={this.changeWell}  />
+                  <Well id={4} well={this.state.dsr.slides[3].slideId} onChange={this.changeWell}  />
                 </Cell>
               </Row>
               <Row is="end">

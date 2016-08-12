@@ -12,10 +12,10 @@ let state = {
     Model: 'Simulated System'
   },
   slides: [
-    { '1': '' },
-    { '2': '' },
-    { '3': '' },
-    { '4': '' }
+    { slideId: '1', stationId: '' },
+    { slideId: '2', stationId: '' },
+    { slideId: '3', stationId: '' },
+    { slideId: '4', stationId: '' },
   ]
 
 };
