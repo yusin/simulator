@@ -30,10 +30,10 @@ const App = connect(state => ({ count: state }))(React.createClass({
       dsr: {
         model: {},
         slides: [
-          { slideId:'1', stationId: '' },
-          { slideId:'2', stationId: '' },
-          { slideId:'3', stationId: '' },
-          { slideId:'4', stationId: '' },
+          { slideId:'1', stationId: '0' },
+          { slideId:'2', stationId: '1' },
+          { slideId:'3', stationId: '2' },
+          { slideId:'4', stationId: '3' },
         ]
       }, actual: {}
     };
