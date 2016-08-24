@@ -1,4 +1,4 @@
-# OpGen/EPAM DSR Simulator
+# Simulator
 
 This project indends to simulate DSR API
 
