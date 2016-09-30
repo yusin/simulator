@@ -40,7 +40,7 @@ const App = connect(state => ({ count: state }))(React.createClass({
   },
   componentDidMount() {
 
-    fetch('/manage/')
+    fetch('manage/')
       .then((response) => response.json())
       .then((responseJson) => {
         console.log(responseJson);
@@ -51,7 +51,7 @@ const App = connect(state => ({ count: state }))(React.createClass({
       });
 
     setInterval(() => {
-      fetch('/manage/')
+      fetch('manage/')
         .then((response) => response.json())
         .then((responseJson) => {
 
@@ -63,23 +63,23 @@ const App = connect(state => ({ count: state }))(React.createClass({
     }, 1000);
 
   },
-  enable(val, v) {
+  enable(val) {
     console.log('enable', this.state.dsr);
-    fetch('/manage', {
+    fetch('manage', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(this.state.dsr)
     });
   },
   openTray() {
-    fetch('/api/dsr/cmd/opentray', {
+    fetch('api/dsr/cmd/opentray', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({})
     });
   },
   closeTray() {
-    fetch('/api/dsr/cmd/closetray', {
+    fetch('api/dsr/cmd/closetray', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({})

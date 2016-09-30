@@ -2,10 +2,10 @@ module.exports = function (app, state) {
 
   app.get('/api/dsr/info', (req, res) => {
     var reponse = {
-      Firmware: state.model.Firmware,
-      Model: state.model.Model
+      Firmware: state[req.param.instance].model.Firmware,
+      Model: state[req.param.instance].model.Model
     };
-    if (state.enabled) {
+    if (state[req.param.instance].enabled) {
       res.send(reponse);
     } else {
       res.status(404)        // HTTP status 404: NotFound
@@ -17,7 +17,7 @@ module.exports = function (app, state) {
     var reponse = {
       BarcodeReadResult: {
         Errors: null,
-        Slides: state.slides
+        Slides: state[req.param.instance].slides
       },
       DsrId: 'Noname',
       SelfCheckResult: {
@@ -25,9 +25,9 @@ module.exports = function (app, state) {
         LastSelfTest: new Date(),
         LastSelfTestSuccess: null
       },
-      State: state.state
+      State: state[req.param.instance].state
     };
-    if (state.enabled) {
+    if (state[req.param.instance].enabled) {
       res.send(reponse);
     } else {
       res.status(404)        // HTTP status 404: NotFound
