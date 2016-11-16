@@ -1,6 +1,10 @@
-module.exports = function (app, state) {
+import log4js from 'log4js';
+const logger = log4js.getLogger();
+
+module.exports = function(app, state) {
 
   app.get('/api/dsr/info', (req, res) => {
+    logger.debug('info request processing')
     var reponse = {
       Firmware: state[req.param.instance].model.Firmware,
       Model: state[req.param.instance].model.Model

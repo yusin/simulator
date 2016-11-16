@@ -1,6 +1,9 @@
 import express from 'express';
-import bodyParser from 'body-parser';
+import bodyParser from 'body-parser'
 import State from './state'
+
+import log4js from 'log4js';
+const logger = log4js.getLogger();
 // import Map from 'es6-map';
 
 const app = express.Router();
@@ -36,9 +39,9 @@ app.use(function (req, res, next) {
     instance = request[1];
     if (!states[instance]) {
       states[instance] = new State(instance);
-      console.log('creating new instance ' + instance);
+      logger.debug('creating new instance ' + instance);
     } else {
-      console.log('getting existance instance ' + instance + ' ' + states[instance].instance)
+      logger.debug('getting existance instance ' ,instance , states[instance].state)
     }
 
 
@@ -53,6 +56,7 @@ app.use(function (req, res, next) {
 
 require('./api/dsr')(app, states);
 require('./api/tray')(app, states);
+require('./api/job')(app, states);
 require('./manage')(app, states);
 
 

@@ -1,11 +1,13 @@
+import log4js from 'log4js';
+const logger = log4js.getLogger(); 
 module.exports = function (app, state) {
   app.post('/api/dsr/cmd/opentray', (req, res) => {
 
-    console.log('open tray');
+    logger.debug('open tray');
     state[req.param.instance].state = 'Active';
     setTimeout(() => {
       state[req.param.instance].state = 'TrayOpen';
-      console.log('tray is opened');
+      logger.debug('tray is opened');
     }, 5000);
     var reponse = {
       Message: '',
@@ -16,17 +18,17 @@ module.exports = function (app, state) {
 
   app.post('/api/dsr/cmd/closetray', (req, res) => {
 
-    console.log('Close tray');
+    logger.debug('Close tray');
     state[req.param.instance].state = 'Active';
     setTimeout(() => {
       state[req.param.instance].state = 'SelfTesting';
-      console.log('SelfTesting');
+      logger.debug('SelfTesting');
       setTimeout(() => {
         state[req.param.instance].state = 'BarcodeReading';
-        console.log('BarcodeReading');
+        logger.debug('BarcodeReading');
         setTimeout(() => {
           state[req.param.instance].state = 'Inactive';
-          console.log('Inactive');
+          logger.debug('Inactive');
         }, 3000);
       }, 3000);
     }, 5000);
@@ -39,11 +41,11 @@ module.exports = function (app, state) {
 
   app.post('/api/dsr/cmd/starttests', (req, res) => {
 
-    console.log('Start tests');
+    logger.debug('Start tests');
     state[req.param.instance].state = 'Active';
     setTimeout(() => {
       state[req.param.instance].state = 'Inactive';
-      console.log('Inactive');
+      logger.debug('Inactive');
     }, 10000);
     var reponse = {
       "Failures": null,
